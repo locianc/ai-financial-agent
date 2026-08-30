@@ -1,0 +1,48 @@
+# =============================================================
+# AI Financial Agent - 容器编排
+# 一键启动：docker compose up --build
+# 访问：http://localhost（80 端口对外；Nginx 反代 API 与 SSE）
+#
+# 数据持久化：
+#   ./data -> /data      SQLite 数据库（AGENT_DB_PATH=/data/agent_runs.db）
+#   ./logs -> /app/logs  后端结构化日志（agent.log 轮转文件）
+#
+# 密钥：复制 .env.example 为 .env 并填入 DEEPSEEK_API_KEY 等；
+#   .env 仅通过 env_file 注入容器，不进入镜像。
+# =============================================================
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-financial-agent-backend
+    env_file:
+      - .env
+    environment:
+      LOG_DIR: /app/logs
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      AGENT_DB_PATH: /data/agent_runs.db
+      UVICORN_WORKERS: ${UVICORN_WORKERS:-2}
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: ai-financial-agent-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

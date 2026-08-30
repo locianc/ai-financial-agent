@@ -1,0 +1,39 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+dist/
+build/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Runtime / data
+*.db
+*.sqlite
+*.sqlite3
+logs/
+data/
+*.log
+
+# Generated test / evaluation output
+tests/outputs/
+app/evaluation/reports/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

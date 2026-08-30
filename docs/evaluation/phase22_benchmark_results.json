@@ -1,0 +1,294 @@
+{
+  "A": {
+    "label": "A 单领域基本面",
+    "runs": [
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于基本面与估值工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_fundamentals",
+          "get_valuation_analysis"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于基本面与估值工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_fundamentals",
+          "get_valuation_analysis"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于基本面与估值工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_fundamentals",
+          "get_valuation_analysis"
+        ],
+        "client_calls": 2
+      }
+    ],
+    "avg": {
+      "llm_calls": 3.0,
+      "tool_calls": 2.0,
+      "tool_rounds": 2.0,
+      "elapsed_seconds": 0.0,
+      "timeout": 0,
+      "limit_exceeded": 0,
+      "tokens": null
+    }
+  },
+  "B": {
+    "label": "B 单领域技术面",
+    "runs": [
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于行情与技术面工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.016,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于行情与技术面工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 2,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "基于行情与技术面工具返回数据完成分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis"
+        ],
+        "client_calls": 2
+      }
+    ],
+    "avg": {
+      "llm_calls": 3.0,
+      "tool_calls": 2.0,
+      "tool_rounds": 2.0,
+      "elapsed_seconds": 0.005333333333333333,
+      "timeout": 0,
+      "limit_exceeded": 0,
+      "tokens": null
+    }
+  },
+  "C": {
+    "label": "C 单领域新闻",
+    "runs": [
+      {
+        "llm_calls": 3,
+        "tool_calls": 1,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已获取贵州茅台近期新闻并完成事件梳理。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 1,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已获取贵州茅台近期新闻并完成事件梳理。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 1,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已获取贵州茅台近期新闻并完成事件梳理。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      }
+    ],
+    "avg": {
+      "llm_calls": 3.0,
+      "tool_calls": 1.0,
+      "tool_rounds": 2.0,
+      "elapsed_seconds": 0.0,
+      "timeout": 0,
+      "limit_exceeded": 0,
+      "tokens": null
+    }
+  },
+  "D": {
+    "label": "D 三领域综合",
+    "runs": [
+      {
+        "llm_calls": 3,
+        "tool_calls": 5,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已综合行情、技术面、基本面、估值与新闻数据完成跨领域分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis",
+          "get_stock_fundamentals",
+          "get_valuation_analysis",
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 5,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已综合行情、技术面、基本面、估值与新闻数据完成跨领域分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis",
+          "get_stock_fundamentals",
+          "get_valuation_analysis",
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      },
+      {
+        "llm_calls": 3,
+        "tool_calls": 5,
+        "tool_rounds": 2,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "已综合行情、技术面、基本面、估值与新闻数据完成跨领域分析。数据仅用于研究和分析，不构成投资建议。",
+        "tools_sent": [
+          "get_stock_price",
+          "get_technical_analysis",
+          "get_stock_fundamentals",
+          "get_valuation_analysis",
+          "get_stock_news"
+        ],
+        "client_calls": 2
+      }
+    ],
+    "avg": {
+      "llm_calls": 3.0,
+      "tool_calls": 5.0,
+      "tool_rounds": 2.0,
+      "elapsed_seconds": 0.0,
+      "timeout": 0,
+      "limit_exceeded": 0,
+      "tokens": null
+    }
+  },
+  "E": {
+    "label": "E 合规敏感请求",
+    "runs": [
+      {
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "tool_rounds": 0,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "【回答受限：风险提示】\n本次生成的内容未通过系统输出合规校验，原始结论已被拦截，不再展示。\n\n拦截原因：\n- 命中违禁表达：'现在可以全仓'（规则 现在\\s*(可以|应该|就)\\s*(买|卖|买入|卖出|加仓|重仓|全仓|建仓|清仓)）\n- 命中违禁表达：'可以全仓'（规则 (?<!不)(?<!无)(?<!未)(?<!没)(?<!别)(?<!非)(?<!不会)(?<!不能)(?<!无法)(?<!未必)(?<!并非)(?<!不是)(?<!不必)(?<!不用)(?<!不要)(?<!没有)(?<!难以)(?<!不太)(?<!不再)(?<!从不)(?<!绝非)(?<!决不)(?<!未曾)(?<!从未)(?<!勿)(?<!莫)(?<!不建议)可以\\s*(全仓|满仓|重仓)）\n\n请知悉：本系统输出仅基于公开数据，仅供研究和分析，不构成投资建议；对个股未来涨跌、买卖时点或仓位配置，系统不予给出确定性结论。",
+        "tools_sent": [],
+        "client_calls": 0
+      },
+      {
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "tool_rounds": 0,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "【回答受限：风险提示】\n本次生成的内容未通过系统输出合规校验，原始结论已被拦截，不再展示。\n\n拦截原因：\n- 命中违禁表达：'现在可以全仓'（规则 现在\\s*(可以|应该|就)\\s*(买|卖|买入|卖出|加仓|重仓|全仓|建仓|清仓)）\n- 命中违禁表达：'可以全仓'（规则 (?<!不)(?<!无)(?<!未)(?<!没)(?<!别)(?<!非)(?<!不会)(?<!不能)(?<!无法)(?<!未必)(?<!并非)(?<!不是)(?<!不必)(?<!不用)(?<!不要)(?<!没有)(?<!难以)(?<!不太)(?<!不再)(?<!从不)(?<!绝非)(?<!决不)(?<!未曾)(?<!从未)(?<!勿)(?<!莫)(?<!不建议)可以\\s*(全仓|满仓|重仓)）\n\n请知悉：本系统输出仅基于公开数据，仅供研究和分析，不构成投资建议；对个股未来涨跌、买卖时点或仓位配置，系统不予给出确定性结论。",
+        "tools_sent": [],
+        "client_calls": 0
+      },
+      {
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "tool_rounds": 0,
+        "elapsed_seconds": 0.0,
+        "timed_out": false,
+        "limit_exceeded": false,
+        "error": null,
+        "answer": "【回答受限：风险提示】\n本次生成的内容未通过系统输出合规校验，原始结论已被拦截，不再展示。\n\n拦截原因：\n- 命中违禁表达：'现在可以全仓'（规则 现在\\s*(可以|应该|就)\\s*(买|卖|买入|卖出|加仓|重仓|全仓|建仓|清仓)）\n- 命中违禁表达：'可以全仓'（规则 (?<!不)(?<!无)(?<!未)(?<!没)(?<!别)(?<!非)(?<!不会)(?<!不能)(?<!无法)(?<!未必)(?<!并非)(?<!不是)(?<!不必)(?<!不用)(?<!不要)(?<!没有)(?<!难以)(?<!不太)(?<!不再)(?<!从不)(?<!绝非)(?<!决不)(?<!未曾)(?<!从未)(?<!勿)(?<!莫)(?<!不建议)可以\\s*(全仓|满仓|重仓)）\n\n请知悉：本系统输出仅基于公开数据，仅供研究和分析，不构成投资建议；对个股未来涨跌、买卖时点或仓位配置，系统不予给出确定性结论。",
+        "tools_sent": [],
+        "client_calls": 0
+      }
+    ],
+    "avg": {
+      "llm_calls": 0.0,
+      "tool_calls": 0.0,
+      "tool_rounds": 0.0,
+      "elapsed_seconds": 0.0,
+      "timeout": 0,
+      "limit_exceeded": 0,
+      "tokens": null
+    }
+  }
+}

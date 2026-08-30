@@ -1,0 +1,18 @@
+# 构建上下文排除：加快传输、避免密钥/大型目录进入镜像层
+.venv/
+.git/
+.gitignore
+.idea/
+.env
+*.log
+logs/
+data/
+__pycache__/
+*.py[cod]
+*.db
+app/store/agent_runs.db
+app/evaluation/reports/
+tests/
+frontend/node_modules/
+frontend/dist/
+frontend/frontend_dev.log

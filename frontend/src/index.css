@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 日夜间模式：跟随 <html>.dark class（由 App 按本地时间 6:00-18:00 切换） */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 品牌色：Gemini 风格渐变 A855F7 -> 3B82F6 -> EC4899 */
+@theme {
+  --color-ink-950: #070711;
+  --color-ink-900: #0a0a14;
+  --color-ink-800: #12121f;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.08;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.7);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Logo 呼吸放大（配合 img 的 drop-shadow 发光） */
+@keyframes logo-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* 白天启动页：浅蓝色光点从底部缓慢上升 */
+@keyframes particle-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* 白天启动页：科技网格缓慢向下流动 */
+@keyframes grid-flow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 48px;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  /* 白天：浅灰白；夜间由 html.dark 覆盖为深蓝黑 */
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+html.dark body {
+  background-color: #070711;
+  color: #e2e8f0;
+}
