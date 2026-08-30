@@ -1,6 +1,6 @@
 # AI Financial Agent
 
-面向 A 股市场的金融投研分析 AI Agent。用户以自然语言提问，Agent 通过多轮工具调用获取实时行情、技术指标、基本面、估值与新闻数据，构建可追溯的证据上下文，由大语言模型生成结构化研报式回答，并经确定性校验器检查后输出。
+面向 A 股的、证据可追溯且默认不提供买卖/仓位建议的 AI 投研助手。用户以自然语言提问，Agent 通过多轮工具调用获取实时行情、技术指标、基本面、估值与新闻数据，构建可追溯的证据上下文，由大语言模型生成结构化研报式回答，并经确定性校验器检查后输出。
 
 > 系统用于金融信息分析与研究辅助，不构成投资建议。
 
@@ -21,7 +21,7 @@
 - **Output Validator**：确定性规则校验（非 LLM 评判），强制 4 大章节结构、拦截买卖/仓位建议与确定性预测、核对证据链一致性、区分数据时效，违规时降级输出。
 - **Runtime Protection**：请求预算（8 轮 / 20 次调用 / 120 秒）、超时与取消机制、客户端断连即停止推理。
 - **Observability**：LLM Token 用量、工具调用轨迹（名称 / 耗时 / 是否成功）、单次运行快照记录。
-- **SSE Streaming**：工具调用与回答分事件流式推送，全链路禁用缓冲。
+- **SSE Streaming**：工具调用过程支持实时流式展示；最终分析文本在通过输出安全校验后再进行流式下发。
 - **Docker Deployment**：后端 + 前端 + Nginx 一键编排，数据库与日志持久化挂载。
 
 ## Architecture
@@ -220,7 +220,7 @@ python -m pytest -q
 - **密钥管理**：所有密钥通过环境变量注入（`.env` 已 gitignore，Docker 镜像不包含 `.env` 与 `*.db`）。
 - **输出安全边界**：Output Validator 拦截投资建议与确定性预测（见 Core Engineering Design）。
 - **运行保护**：请求预算、超时、取消；客户端断连即停止后端推理。
-- **部署安全**：本仓库的 `docker-compose.yml` 默认**不含认证与 HTTPS**（`listen 80`），仅适合可信内网。面向公网部署前必须自行补充：认证（OIDC / API Token / 网关）、TLS 终结、速率限制、关闭 `/docs`、非 root 运行容器等（详见 `docs/deployment/deployment_audit.md`）。
+- **部署安全**：本仓库的 `docker-compose.yml` 默认**不含认证与 HTTPS**（`listen 80`），仅适合可信内网。**公网 Demo 正式上线时必须使用 HTTPS/TLS**（Nginx HTTPS 就绪模板见 `nginx.conf`，默认关闭、不生成假证书），并补充认证（OIDC / API Token / 网关）、速率限制、关闭 `/docs`、非 root 运行容器等（详见 `docs/deployment/deployment_audit.md`）。
 
 ## Limitations
 

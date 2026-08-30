@@ -35,6 +35,7 @@ _client 的创建放在路由函数体内而非 Depends 依赖：
 """
 
 import logging
+import os
 from contextlib import asynccontextmanager
 from dataclasses import asdict
 from typing import Any, Dict, List
@@ -72,7 +73,18 @@ async def lifespan(_: FastAPI):
     logger.info("AI Financial Agent service stopped")
 
 
-app = FastAPI(title="AI Financial Agent Service", version="0.1.0", lifespan=lifespan)
+# Phase 24：production 环境关闭公开文档（/docs、/redoc、/openapi.json），
+# 减少公网攻击面；development（默认）保留完整文档便于本地调试。
+# load_env() 已在本模块导入时执行，.env / 容器环境变量中的 ENVIRONMENT 生效。
+_is_production = os.environ.get("ENVIRONMENT", "development").lower() == "production"
+app = FastAPI(
+    title="AI Financial Agent Service",
+    version="0.1.0",
+    lifespan=lifespan,
+    docs_url=None if _is_production else "/docs",
+    redoc_url=None if _is_production else "/redoc",
+    openapi_url=None if _is_production else "/openapi.json",
+)
 app.include_router(stream_router)
 
 

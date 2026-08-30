@@ -9,6 +9,14 @@
 #
 # 密钥：复制 .env.example 为 .env 并填入 DEEPSEEK_API_KEY 等；
 #   .env 仅通过 env_file 注入容器，不进入镜像。
+#
+# Phase 24 公网 Demo 形态：
+#   - FastAPI 不对外暴露端口，仅 Nginx 提供 HTTP；
+#   - 后端以非 root（uid 1000）运行；宿主机 bind mount 的 logs/ data/
+#     目录需可被 uid 1000 写入（VPS 上执行：mkdir -p logs data &&
+#     chown 1000:1000 logs data）；
+#   - SQLite 必须单 worker（UVICORN_WORKERS=1），避免多进程锁竞争；
+#   - 容器级资源上限（deploy.resources.limits），防公网请求打爆 VPS。
 # =============================================================
 
 services:
@@ -23,7 +31,11 @@ services:
       LOG_DIR: /app/logs
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
       AGENT_DB_PATH: /data/agent_runs.db
-      UVICORN_WORKERS: ${UVICORN_WORKERS:-2}
+      # SQLite 必须单 worker：多 worker 会引入锁竞争与写冲突
+      UVICORN_WORKERS: ${UVICORN_WORKERS:-1}
+      # production 时 FastAPI 关闭 /docs、/redoc、/openapi.json；
+      # 本地开发需要文档可覆盖为 development
+      ENVIRONMENT: ${ENVIRONMENT:-production}
     volumes:
       - ./logs:/app/logs
       - ./data:/data
@@ -34,6 +46,11 @@ services:
       retries: 5
       start_period: 20s
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2g
 
   frontend:
     build:
@@ -45,4 +62,15 @@ services:
     depends_on:
       backend:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256m
